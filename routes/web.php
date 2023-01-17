@@ -18,7 +18,7 @@ Route::get('/urun/{urunadi}/{id?}', function ($urunadi, $id = 0) {
 Route::get('/kampanya', function () {
     return redirect()->route('urun_detay', ['urunadi' => 'elma', 'id' => 5]);
 });*/
-Route::get('/', 'AnasayfaController@index');
+Route::get('/', 'AnasayfaController@index')->name('anasayfa');
 
 Route::get('/kategori/{slug_kategoriadi}', 'KategoriController@index')->name('kategori');
 Route::get('/urun/{slug_urunadi}', 'UrunController@index')->name('urun');
