@@ -46,7 +46,7 @@
                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Çıkış</a>
                                 <form id="logout-form" action="{{ route('kullanici.oturumukapat') }}" method="post"
                                       style="display: none;">
-                                    {{ csrf_field() }}
+                                    @csrf
                                 </form>
                             </li>
                         </ul>
