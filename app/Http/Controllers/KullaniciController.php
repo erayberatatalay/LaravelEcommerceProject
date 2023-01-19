@@ -92,7 +92,7 @@ class KullaniciController extends Controller
             'aktivasyon_anahtari' => Str::random(60),
             'aktif_mi' => 0
         ]);
-        //$kullanici->detay()->save(new KullaniciDetay());
+        $kullanici->detay()->save(new KullaniciDetay());
 
         Mail::to(request('email'))->send(new KullaniciKayitMail($kullanici));
 
