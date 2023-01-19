@@ -17,20 +17,26 @@
                     <hr>
                     <div class="row">
                         <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
+                            <a href="#" class="thumbnail"><img
+                                    src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
+                            <a href="#" class="thumbnail"><img
+                                    src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
                         </div>
                         <div class="col-xs-3">
-                            <a href="#" class="thumbnail"><img src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
+                            <a href="#" class="thumbnail"><img
+                                    src="http://via.placeholder.com/60x60?text=UrunResmi"></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-7">
                     <h1>{{$urun->urun_adi}}</h1>
                     <p class="price">{{$urun->fiyati}} ₺</p>
-                    <p><a href="#" class="btn btn-theme">Sepete Ekle</a></p>
+                    <form action="{{route('sepet.ekle')}}" method="post">@csrf
+                        <input type="hidden" name="id" value="{{$urun->id}}">
+                        <input type="submit" value="Sepete Ekle" class="btn btn-theme">
+                    </form>
                 </div>
             </div>
 
