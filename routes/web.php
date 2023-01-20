@@ -1,23 +1,47 @@
 <?php
-/*Route::get('/', function () {
-    return view('anasayfa');
+Route::group(['prefix' => 'yonetim', 'namespace' => 'Yonetim'], function () {
+    Route::redirect('/', '/yonetim/oturumac');
+
+    Route::match(['get', 'post'], '/oturumac', 'KullaniciController@oturumac')->name('yonetim.oturumac');
+    Route::get('/oturumukapat', 'KullaniciController@oturumukapat')->name('yonetim.oturumukapat');
+
+    Route::group(['middleware' => 'yonetim'], function () {
+        Route::get('/anasayfa', 'AnasayfaController@index')->name('yonetim.anasayfa');
+
+        Route::group(['prefix' => 'kullanici'], function () {
+            Route::match(['get', 'post'], '/', 'KullaniciController@index')->name('yonetim.kullanici');
+            Route::get('/yeni', 'KullaniciController@form')->name('yonetim.kullanici.yeni');
+            Route::get('/duzenle/{id}', 'KullaniciController@form')->name('yonetim.kullanici.duzenle');
+            Route::post('/kaydet/{id?}', 'KullaniciController@kaydet')->name('yonetim.kullanici.kaydet');
+            Route::get('/sil/{id}', 'KullaniciController@sil')->name('yonetim.kullanici.sil');
+        });
+
+        Route::group(['prefix' => 'kategori'], function () {
+            Route::match(['get', 'post'], '/', 'KategoriController@index')->name('yonetim.kategori');
+            Route::get('/yeni', 'KategoriController@form')->name('yonetim.kategori.yeni');
+            Route::get('/duzenle/{id}', 'KategoriController@form')->name('yonetim.kategori.duzenle');
+            Route::post('/kaydet/{id?}', 'KategoriController@kaydet')->name('yonetim.kategori.kaydet');
+            Route::get('/sil/{id}', 'KategoriController@sil')->name('yonetim.kategori.sil');
+        });
+
+        Route::group(['prefix' => 'urun'], function () {
+            Route::match(['get', 'post'], '/', 'UrunController@index')->name('yonetim.urun');
+            Route::get('/yeni', 'UrunController@form')->name('yonetim.urun.yeni');
+            Route::get('/duzenle/{id}', 'UrunController@form')->name('yonetim.urun.duzenle');
+            Route::post('/kaydet/{id?}', 'UrunController@kaydet')->name('yonetim.urun.kaydet');
+            Route::get('/sil/{id}', 'UrunController@sil')->name('yonetim.urun.sil');
+        });
+
+        Route::group(['prefix' => 'siparis'], function () {
+            Route::match(['get', 'post'], '/', 'SiparisController@index')->name('yonetim.siparis');
+            Route::get('/yeni', 'SiparisController@form')->name('yonetim.siparis.yeni');
+            Route::get('/duzenle/{id}', 'SiparisController@form')->name('yonetim.siparis.duzenle');
+            Route::post('/kaydet/{id?}', 'SiparisController@kaydet')->name('yonetim.siparis.kaydet');
+            Route::get('/sil/{id}', 'SiparisController@sil')->name('yonetim.siparis.sil');
+        });
+    });
 });
 
-Route::get('/merhaba', function () {
-    return 'welcome';
-});
-
-Route::get('/api/v1/merhaba', function () {
-    return ['mesaj' => 'welcome'];
-});
-
-Route::get('/urun/{urunadi}/{id?}', function ($urunadi, $id = 0) {
-    return "Ürün Adı: $urunadi $id";
-})->name('urun_detay');
-
-Route::get('/kampanya', function () {
-    return redirect()->route('urun_detay', ['urunadi' => 'elma', 'id' => 5]);
-});*/
 Route::get('/', 'AnasayfaController@index')->name('anasayfa');
 
 Route::get('/kategori/{slug_kategoriadi}', 'KategoriController@index')->name('kategori');
@@ -39,7 +63,7 @@ Route::get('/odeme', 'OdemeController@index')->name('odeme');
 Route::post('/odeme', 'OdemeController@odemeyap')->name('odemeyap');
 
 Route::group(['middleware' => 'auth'], function () {
-        Route::get('/siparisler', 'SiparisController@index')->name('siparisler');
+    Route::get('/siparisler', 'SiparisController@index')->name('siparisler');
     Route::get('/siparisler/{id}', 'SiparisController@detay')->name('siparis');
 });
 
@@ -54,5 +78,6 @@ Route::group(['prefix' => 'kullanici'], function () {
 
 Route::get('/test/mail', function () {
     $kullanici = \App\Models\Kullanici::find(1);
+
     return new App\Mail\KullaniciKayitMail($kullanici);
 });

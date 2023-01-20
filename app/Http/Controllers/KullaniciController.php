@@ -69,14 +69,12 @@ class KullaniciController extends Controller
         }
     }
 
-    public
-    function kaydol_form()
+    public function kaydol_form()
     {
         return view('kullanici.kaydol');
     }
 
-    public
-    function kaydol()
+    public function kaydol()
     {
         $this->validate(request(), [
             'adsoyad' => 'required|min:5|max:60',
@@ -100,8 +98,7 @@ class KullaniciController extends Controller
         return redirect()->route('anasayfa');
     }
 
-    public
-    function aktiflestir($anahtar)
+    public function aktiflestir($anahtar)
     {
         $kullanici = Kullanici::where('aktivasyon_anahtari', $anahtar)->first();
         if (!is_null($kullanici)) {
@@ -119,8 +116,7 @@ class KullaniciController extends Controller
         }
     }
 
-    public
-    function oturumukapat()
+    public function oturumukapat()
     {
         auth()->logout();
 
