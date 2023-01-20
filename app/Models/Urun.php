@@ -9,10 +9,11 @@ class Urun extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'urun';
-    public $timestamps = false;
+    protected $table = "urun";
+
     protected $guarded = [];
-    const CREATED_AT = 'olusturulma_tarihi';
+
+    const CREATED_AT = 'olusturma_tarihi';
     const UPDATED_AT = 'guncelleme_tarihi';
     const DELETED_AT = 'silinme_tarihi';
 
@@ -23,6 +24,6 @@ class Urun extends Model
 
     public function detay()
     {
-        return $this->hasOne('App\Models\UrunDetay');
+        return $this->hasOne('App\Models\UrunDetay')->withDefault();
     }
 }

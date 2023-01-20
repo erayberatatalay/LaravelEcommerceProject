@@ -39,8 +39,7 @@ class KullaniciController extends Controller
         if (auth()->attempt($credentials, $aktif_mi)) {
             $aktif_mi = request()->has('benihatirla');
             if (auth()->attempt($credentials, $aktif_mi)) {
-                //$aktif_sepet_id = Sepet::aktif_sepet_id();
-                $aktif_sepet_id = session('aktif_sepet_id');
+                $aktif_sepet_id = Sepet::aktif_sepet_id();
                 if (is_null($aktif_sepet_id)) {
                     $aktif_sepet = Sepet::create(['kullanici_id' => auth()->id()]);
                     $aktif_sepet_id = $aktif_sepet->id;
