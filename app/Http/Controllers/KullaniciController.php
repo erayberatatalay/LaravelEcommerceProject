@@ -33,7 +33,8 @@ class KullaniciController extends Controller
 
         $credentials = [
             'email' => request('email'),
-            'password' => request('sifre')
+            'password' => request('sifre'),
+            'aktif_mi' => 1
         ];
         $aktif_mi = request()->has('benihatirla');
         if (auth()->attempt($credentials, $aktif_mi)) {

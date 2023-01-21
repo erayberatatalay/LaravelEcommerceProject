@@ -4,7 +4,7 @@
     <h1 class="page-header">Sipariş Yönetimi</h1>
 
     <form method="post" action="{{ route('yonetim.siparis.kaydet', $entry->id) }}">
-        {{ csrf_field() }}
+        @csrf
 
         <div class="pull-right">
             <button type="submit" class="btn btn-primary">

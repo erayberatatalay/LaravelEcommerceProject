@@ -9,7 +9,7 @@
             <a href="{{ route('yonetim.kategori.yeni') }}" class="btn btn-primary">Yeni</a>
         </div>
         <form method="post" action="{{ route('yonetim.kategori') }}" class="form-inline">
-            {{ csrf_field() }}
+            @csrf
             <div class="form-group">
                 <label for="aranan">Ara</label>
                 <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Kategori Ara..." value="{{ old('aranan') }}">

@@ -6,7 +6,7 @@
     <h3 class="sub-header">Sipariş Listesi</h3>
     <div class="well">
         <form method="post" action="{{ route('yonetim.siparis') }}" class="form-inline">
-            {{ csrf_field() }}
+            @csrf
             <div class="form-group">
                 <label for="aranan">Ara</label>
                 <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Sipariş Ara..." value="{{ old('aranan') }}">

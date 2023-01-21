@@ -4,7 +4,7 @@
     <h1 class="page-header">Kullanıcı Yönetimi</h1>
 
     <form method="post" action="{{ route('yonetim.kullanici.kaydet', $entry->id) }}">
-        {{ csrf_field() }}
+        @csrf
 
         <div class="pull-right">
             <button type="submit" class="btn btn-primary">

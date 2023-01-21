@@ -5,7 +5,7 @@
         <div class="bg-content">
             <h2>Ödeme</h2>
             <form action="{{ route('odemeyap') }}" method="post">
-                {{ csrf_field() }}
+                @csrf
                 <div class="row">
                     <div class="col-md-5">
                         <h3>Ödeme Bilgileri</h3>
