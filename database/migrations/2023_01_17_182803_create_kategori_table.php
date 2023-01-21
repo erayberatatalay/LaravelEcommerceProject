@@ -18,7 +18,7 @@ class CreateKategoriTable extends Migration
             $table->integer('ust_id')->nullable();
             $table->string('kategori_adi', 30);
             $table->string('slug', 40);
-            $table->timestamp('olusturulma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('olusturma_tarihi')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('guncelleme_tarihi')->default(DB::raw('CURRENT_TIMESTAMP on UPDATE CURRENT_TIMESTAMP'));
             //$table->softDeletes();
             $table->timestamp('silinme_tarihi')->nullable();

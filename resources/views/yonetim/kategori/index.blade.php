@@ -12,7 +12,8 @@
             @csrf
             <div class="form-group">
                 <label for="aranan">Ara</label>
-                <input type="text" class="form-control form-control-sm" name="aranan" id="aranan" placeholder="Kategori Ara..." value="{{ old('aranan') }}">
+                <input type="text" class="form-control form-control-sm" name="aranan" id="aranan"
+                       placeholder="Kategori Ara..." value="{{ old('aranan') }}">
                 <label for="ust_id">Üst Kategori</label>
                 <select name="ust_id" id="ust_id" class="form-control">
                     <option value="">Seçiniz</option>
@@ -42,7 +43,9 @@
             </thead>
             <tbody>
             @if (count($list) == 0)
-                <tr><td colspan="6" class="text-center">Kayıt bulunamadı!</td></tr>
+                <tr>
+                    <td colspan="6" class="text-center">Kayıt bulunamadı!</td>
+                </tr>
             @endif
             @foreach ($list as $entry)
                 <tr>
@@ -52,10 +55,13 @@
                     <td>{{ $entry->kategori_adi }}</td>
                     <td>{{ $entry->olusturma_tarihi }}</td>
                     <td style="width: 100px">
-                        <a href="{{ route('yonetim.kategori.duzenle', $entry->id) }}" class="btn btn-xs btn-success" data-toggle="tooltip" data-placement="top" title="Düzenle">
+                        <a href="{{ route('yonetim.kategori.duzenle', $entry->id) }}" class="btn btn-xs btn-success"
+                           data-toggle="tooltip" data-placement="top" title="Düzenle">
                             <span class="fa fa-pencil"></span>
                         </a>
-                        <a href="{{ route('yonetim.kategori.sil', $entry->id) }}" class="btn btn-xs btn-danger" data-toggle="tooltip" data-placement="top" title="Sil" onclick="return confirm('Emin misiniz?')">
+                        <a href="{{ route('yonetim.kategori.sil', $entry->id) }}" class="btn btn-xs btn-danger"
+                           data-toggle="tooltip" data-placement="top" title="Sil"
+                           onclick="return confirm('Emin misiniz?')">
                             <span class="fa fa-trash"></span>
                         </a>
                     </td>
