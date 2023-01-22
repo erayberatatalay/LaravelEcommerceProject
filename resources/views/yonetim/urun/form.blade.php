@@ -13,7 +13,7 @@
         </div>
         <h3 class="sub-header">
             Ürün {{ $entry->id > 0 ? "Düzenle" : "Ekle" }}
-        </h3>
+        </h3>    
 
         @include('layouts.partials.errors')
         @include('layouts.partials.alert')
